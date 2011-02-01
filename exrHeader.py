@@ -87,7 +87,7 @@ class ExrHeader:
         
         return True
     
-    def getValue(self,name):
+    def getAttr(self,name):
         if self.header.has_key(name):
             return self.header[name]
         return ""
@@ -98,18 +98,16 @@ class ExrHeader:
     def __getattr__(self, name):
         return self.getValue(name)
     
-    def keys(self):
+    def attributes(self):
         return self.header.keys()
 
 if __name__ == "__main__":
     fd = open(sys.argv[1], 'rb')
     exr = ExrHeader()
     if exr.read(fd):
-        print( exr.displayWindow)
+        print exr.attributes()
     else:
         print( "unknown file or error" )
-    
-    print exr.keys()
     
     fd.close()
 

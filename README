@@ -1,0 +1,28 @@
+This is OpenEXR header loader.
+
+==========================================================================
+Usage Examples
+==========================================================================
+
+- Collecting attributes
+from exrHeader import *
+
+fd = open('sample.exr','rb')
+exr = ExrHeader()
+if exr.read(fd):
+    print exr.attributes()
+fd.close()
+
+- Get channel list
+from exrHeader import *
+
+fd = open('sample.exr','rb')
+exr = ExrHeader()
+if exr.read(fd):
+    chlist = exr.getAttr('channels')['chlist']
+    for ch in chlist:
+        print "%s:%s" % (ch, chlist[ch])
+fd.close()
+
+
+
