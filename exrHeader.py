@@ -96,7 +96,7 @@ class ExrHeader:
         return self.header
     
     def __getattr__(self, name):
-        return self.getValue(name)
+        return self.getAttr(name)
     
     def attributes(self):
         return self.header.keys()
