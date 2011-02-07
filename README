@@ -4,7 +4,8 @@ This is OpenEXR header loader.
 Usage Examples
 ==========================================================================
 
-- Collecting attributes
+Collecting attributes
+---------------------
 from exrHeader import *
 
 fd = open('sample.exr','rb')
@@ -13,7 +14,9 @@ if exr.read(fd):
     print exr.attributes()
 fd.close()
 
-- Get channel list
+
+Get channel list
+----------------
 from exrHeader import *
 
 fd = open('sample.exr','rb')
@@ -24,5 +27,20 @@ if exr.read(fd):
         print "%s:%s" % (ch, chlist[ch])
 fd.close()
 
+
+scanline or tiles
+-----------------
+from exrHeader import *
+
+fd = open('sample.exr', 'rb')
+exr = ExrHeader()
+if exr.read(fd):
+    if not exr.getAttr('tiles'):
+        print("scanline")
+    else:
+        print("tiles")
+else:
+    print( "unknown file or error" )
+fd.close()
 
 
